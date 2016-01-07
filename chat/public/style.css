@@ -1,0 +1,11 @@
+.messageWrapper {
+	margin: 5px 10px;
+}
+
+.sender {
+	font-weight: bold;
+}
+
+.message {
+	padding: 0px 10px;
+}

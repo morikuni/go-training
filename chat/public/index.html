@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chat</title>
+		<script type="text/javascript" src="./main.js"></script>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+	</head>
+
+	<body>
+		<form>
+			<label for="name">名前</label>
+			<input type="text" id="name" placeholder="name">
+			<input type="button" id="connect" onclick="start()" value="接続">
+		</form>
+		<form>
+			<label for="msg">メッセージ</label>
+			<input type="text" id="msg" placeholder="text">
+			<input type="button" id="send" onclick="sendMessage()" value="送信">
+		</form>
+		<div id="messages"></div>
+	</body>
+</html>
+
