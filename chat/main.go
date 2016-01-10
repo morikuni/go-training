@@ -3,8 +3,9 @@ package main
 import (
 	"net/http"
 
-	"./chat"
 	"golang.org/x/net/websocket"
+
+	"github.com/morikuni/go-training/chat/chat"
 )
 
 func main() {

@@ -12,6 +12,7 @@ type Client interface {
 	Send(*MessageJSON)
 	Message(string) *Message
 	Close()
+	SetRoom(Room)
 }
 
 func NewClient(conn *websocket.Conn, room Room) Client {
@@ -70,4 +71,9 @@ func (c *client) Start() {
 func (c *client) Close() {
 	c.room.Remove(c)
 	c.conn.Close()
+}
+
+func (c *client) SetRoom(r Room) {
+	c.room.Remove(c)
+	c.room = r
 }

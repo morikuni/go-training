@@ -1,6 +1,7 @@
 package chat
 
 import (
+	"log"
 	"sync"
 )
 
@@ -39,6 +40,7 @@ func (r *room) Add(c Client) {
 	r.mu.Lock()
 	r.clients = append(r.clients, c)
 	r.mu.Unlock()
+	log.Println(c.Name(), "enter room", r.name)
 }
 
 func (r *room) Remove(c Client) {
@@ -57,6 +59,7 @@ func (r *room) Remove(c Client) {
 	r.mu.Lock()
 	r.clients = append(r.clients[:idx], r.clients[idx+1:]...)
 	r.mu.Unlock()
+	log.Println(c.Name(), "exit room", r.name)
 }
 
 func (r *room) Broadcast(m *Message) {

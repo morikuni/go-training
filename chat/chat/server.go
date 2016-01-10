@@ -17,13 +17,13 @@ func NewServer() Server {
 	s := &server{
 		rooms: map[string]Room{},
 	}
-	s.lobby = NewRoom("lobby", s)
+	s.lobby = newLobby(s)
 	return s
 }
 
 type server struct {
 	rooms map[string]Room
-	lobby Room
+	lobby *lobby
 	mu    sync.RWMutex
 }
 
@@ -37,7 +37,7 @@ func (s *server) Room(name string) Room {
 		s.mu.RUnlock()
 		return room
 	}
-	s.mu.Unlock()
+	s.mu.RUnlock()
 	s.mu.Lock()
 	room := NewRoom(name, s)
 	s.rooms[name] = room
